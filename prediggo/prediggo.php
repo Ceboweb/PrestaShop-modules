@@ -62,7 +62,7 @@ class Prediggo extends Module
 	{
 		$this->name = 'prediggo';
 		$this->tab = 'advertising_marketing';
-		$this->version = '1.4';
+		$this->version = '1.5';
 		$this->author = 'PrestaShop';
 		$this->need_instance = 0;
 		$this->_html = '';
@@ -846,7 +846,7 @@ class Prediggo extends Module
 		);
 		
 		$this->fields_value['web_site_id'] 			= $this->oPrediggoConfig->web_site_id;
-		$this->fields_value['gateway_profil_id'] 	= (int)$this->context->shop->id;
+		$this->fields_value['gateway_profil_id'] 	= (int)$this->context->shop->id.'000'.(int)$this->context->cookie->id_lang;
 		
 		/*
 		 * EXPORT MAIN CONFIGURATION

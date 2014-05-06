@@ -105,7 +105,7 @@ class OrderExtractorToXML extends DataExtractorToXML
 				$itemid = $dom->createElement('itemid', (int)$aOrderProduct['product_id']);
 				$item->appendChild($itemid);
 
-				$profile = $dom->createElement('profile', (int)$aEntity['id_shop']);
+				$profile = $dom->createElement('profile', (int)$aEntity['id_shop'].'000'.(int)$oOrder->id_lang);
 				$item->appendChild($profile);
 
 				if ($oOrder->getTaxCalculationMethod() == PS_TAX_EXC)

@@ -114,7 +114,7 @@ class ProductExtractorToXML extends DataExtractorToXML
 		
 		// Force the shop of the context regarding the shop of the product for the getParentsCategories function
 		if((int)Context::getContext()->shop->id != (int)$aEntity['id_shop'])
-			Context::getContext()->shop = $oPrediggoConfig->getContext();
+			Context::getContext()->shop = $oPrediggoConfig->getContext()->shop;
 
 		$ps_tax = (int)Configuration::get('PS_TAX');
 
@@ -134,7 +134,7 @@ class ProductExtractorToXML extends DataExtractorToXML
 			$id = $dom->createElement('id', (int)$oProduct->id);
 			$root->appendChild($id);
 
-			$profile = $dom->createElement('profile', (int)$aEntity['id_shop']);
+			$profile = $dom->createElement('profile', (int)$aEntity['id_shop'].'000'.(int)$id_lang);
 			$root->appendChild($profile);
 
 			$name = $dom->createElement('name');

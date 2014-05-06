@@ -237,6 +237,8 @@ class PrediggoCall
 		$this->oRecoParam->setServerUrl($this->sServerUrl);
 		$this->oRecoParam->setShopId($this->sShopId);
 		$this->oRecoParam->setSessionId(md5(session_id()));
+		if(method_exists($this->oRecoParam, 'setProfileMapId'))
+			$this->oRecoParam->setProfileMapId((int)Context::getContext()->shop->id.'000'.(int)$params['cookie']->id_lang);
 		if(method_exists($this->oRecoParam, 'setLanguageCode'))
 			$this->oRecoParam->setLanguageCode(Language::getIsoById((int)$params['cookie']->id_lang));
 		return true;
@@ -254,7 +256,6 @@ class PrediggoCall
 
 		$this->oRecoParam->setNbRecommendation((int)$params['nb_items']);
 		$this->oRecoParam->setShowAds(false);
-		$this->oRecoParam->setProfileMapId((int)Context::getContext()->shop->id);
 		$this->oRecoParam->setUserId(($params['customer']->isLogged())?(int)$params['customer']->id:'0');
 	}
 
